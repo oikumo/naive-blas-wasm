@@ -1,0 +1,18 @@
+{
+  "name": "naive-blas-wasm",
+  "version": "1.0.9",
+  "description": "",
+  "main": "dist/module.js",
+  "types": "dist/module.d.ts",
+  "files": [
+    "dist/module.js",
+    "dist/module.wasm",
+    "dist/module.d.ts"
+  ],
+  "scripts": {
+    "pub": "npm publish --access public",
+    "build": "make"
+  },
+  "author": "oikumo@gmail.com",
+  "license": "MIT"
+}
