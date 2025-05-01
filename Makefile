@@ -1,10 +1,15 @@
 # Project Configuration
 BUILD_DIR = dist
-SRC_DIR = src
 TS_SRC_DIR = src-ts
 EMCC = emcc
 TSC = tsc
 NPM = npm
+
+# Source and object files
+SRC_DIR = blas
+SRC = $(wildcard $(SRC_DIR)/*.cpp)
+OBJ_DIR = build/obj
+OBJ = $(patsubst $(SRC_DIR)/%.cpp,$(OBJ_DIR)/%.o,$(SRC))
 
 # Emscripten Compilation Flags
 EMFLAGS = \
@@ -23,9 +28,20 @@ EMFLAGS = \
 # Targets
 .PHONY: all build clean
 
-all: clean build
+#all: clean build
 
 build: $(BUILD_DIR)/module.js
+
+# Default target
+all: $(TARGET) 
+
+$(TARGET): $(OBJ)
+	@mkdir -p $(@D)
+	$(CXX) $(CXXFLAGS) $^ -o $@
+
+$(OBJ_DIR)/%.o: $(SRC_DIR)/%.cpp
+	@mkdir -p $(@D)
+	$(CXX) $(CXXFLAGS) -c $< -o $@
 
 $(BUILD_DIR)/module.js: $(SRC_DIR)/main.cpp
 	@mkdir -p $(BUILD_DIR)
