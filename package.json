@@ -11,7 +11,8 @@
   ],
   "scripts": {
     "pub": "make & npm publish --access public",
-    "build": "make"
+    "build": "make",
+    "test": "./tests/build/tests_runner"
   },
   "author": "oikumo@gmail.com",
   "license": "MIT"
