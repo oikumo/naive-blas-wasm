@@ -17,11 +17,4 @@ jobs:
       working-directory: ./tests
       run: make
     - name: run tests
-      working-directory: ./tests
-      run: |
-        OUTPUT=$(./build/tests_runner)
-        echo "$OUTPUT"
-        if [[ "$OUTPUT" == *"error"* ]]; then
-          echo "Error detected in output!"
-          exit 1
-        fi
+      run: npm run tests
