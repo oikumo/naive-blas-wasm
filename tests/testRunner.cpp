@@ -8,5 +8,5 @@ int main() {
     texture_test::drawTexture();
     texture_test::vectorTest();
 
-    return 0;
+    return 1;
 }
