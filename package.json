@@ -1,6 +1,6 @@
 {
   "name": "naive-blas-wasm",
-  "version": "1.0.12",
+  "version": "1.0.13",
   "description": "",
   "main": "dist/module.js",
   "types": "dist/module.d.ts",
@@ -10,7 +10,7 @@
     "dist/module.d.ts"
   ],
   "scripts": {
-    "pub": "make & npm publish --access public",
+    "pub": "npm publish --access public",
     "build": "make",
     "test": "cd tests && make clean && make && ./build/tests_runner"
   },
