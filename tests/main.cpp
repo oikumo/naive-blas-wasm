@@ -6,7 +6,5 @@ int main() {
 
     std::cout << "test multiply" << std::endl;
 
-    exit(1);
-
-    return 0;
+    return 1;
 }
