@@ -20,4 +20,4 @@ jobs:
       working-directory: ./tests
       run: |
         ./build/tests_runner
-        echo "Tests returned exit code ${0}"
+        exit 1
