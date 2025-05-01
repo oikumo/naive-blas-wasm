@@ -14,6 +14,8 @@ jobs:
     steps:
     - uses: actions/checkout@v4
     - name: make
-      run: ./tests/make
-    - name: make distcheck
-      run: ./tests/build/tests_runner
+      working-directory: ./tests
+      run: make
+    - name: run tests
+      working-directory: ./tests
+      run: ./build/tests_runner
