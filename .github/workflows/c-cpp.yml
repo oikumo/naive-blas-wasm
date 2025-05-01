@@ -20,7 +20,4 @@ jobs:
       working-directory: ./tests
       run: |
         ./build/tests_runner
-        if [ $? -eq 1 ]; then
-          echo "Tests returned exit code 1 but were successful."
-          exit 1
-        fi
+        echo "Tests returned exit code ${0}"
