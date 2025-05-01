@@ -1,2 +1,1 @@
-
-emcc main.cpp   -O3   -s WASM=1   -s MODULARIZE=1   -s EXPORT_NAME="Module"   -s -lembind --emit-tsd module.d.ts  -o dist/module.js
+[![C/C++ CI](https://github.com/oikumo/naive-blas-wasm/actions/workflows/c-cpp.yml/badge.svg)](https://github.com/oikumo/naive-blas-wasm/actions/workflows/c-cpp.yml)
