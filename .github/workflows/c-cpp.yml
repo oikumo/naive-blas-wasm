@@ -19,5 +19,9 @@ jobs:
     - name: run tests
       working-directory: ./tests
       run: |
-        ./build/tests_runner
-        exit 1
+        OUTPUT=$(./build/tests_runner)
+        echo "$OUTPUT"
+        if [[ "$OUTPUT" == *"error"* ]]; then
+          echo "Error detected in output!"
+          exit 1
+        fi
