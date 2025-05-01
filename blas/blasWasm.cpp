@@ -3,36 +3,14 @@
 #include <cstdint>
 #include <cstdlib>
 #include <math.h>
-#include "../blas/include/vector.h"
+#include "include/vector.h"
+#include "include/data.h"
+#include "include/texture.h"
 
 using namespace emscripten;
 
-extern "C" {
-
-  class Data {
-
-    public:
-    std::vector<uint32_t> data;
-
-    void create(int length) {
-      data.assign(length, 0);
-    }
-
-    int size() {
-      return data.size();
-    }
-
-    uint32_t get(int index) {
-      return data[index];
-    }
-    
-    void set(int index, uint32_t value) {
-      data[index] = value;
-    }
-  };
-}
-
 EMSCRIPTEN_BINDINGS(my_module) {
+  function("draw", &texture::draw);
   function("multiply", &multiply, allow_raw_pointers());
   function("int_sqrt", &int_sqrt);
   function("int_sum", &int_sum);

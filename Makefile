@@ -8,8 +8,6 @@ NPM = npm
 # Source and object files
 SRC_EMC_EXPORT_FILE=blasWasm.cpp
 SRC_DIR = blas
-
-#SRC = $(wildcard $(SRC_DIR)/*.cpp)
 SRC := $(shell find ./$(SRC_DIR)/src -name '*.cpp')
 
 OBJ_DIR = build/obj
@@ -32,20 +30,9 @@ EMFLAGS = \
 # Targets
 .PHONY: all build clean
 
-#all: clean build
+all: clean build
 
 build: $(BUILD_DIR)/module.js
-
-# Default target
-#all: $(TARGET)
-
-# $(TARGET): $(OBJ)
-# 	@mkdir -p $(@D)
-# 	$(CXX) $(CXXFLAGS) $^ -o $@
-
-# $(OBJ_DIR)/%.o: $(SRC_DIR)/%.cpp
-# 	@mkdir -p $(@D)
-# 	$(CXX) $(CXXFLAGS) -c $< -o $@
 
 $(BUILD_DIR)/module.js: $(SRC_DIR)/$(SRC_EMC_EXPORT_FILE)
 	@mkdir -p $(BUILD_DIR)

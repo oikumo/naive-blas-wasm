@@ -26,7 +26,7 @@ int int_sum(int a, int b) { return a + b; }
 void multiply(float factor, size_t ptr, size_t length) {
     auto data = reinterpret_cast<uint32_t*>(ptr);
     for (size_t i = 0; i < length; ++i) {
-        data[i] *= factor + 1;
+        data[i] *= factor;
     }
 }
     

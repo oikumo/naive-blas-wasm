@@ -1,26 +1,32 @@
 # Compiler and flags
 CXX = g++
 CXXFLAGS = -std=c++11 -Wall -Wextra -g -Iinclude
-TARGET = build/tests_runner
 
-# Source and object files
-SRC_DIR = ./
-SRC = $(wildcard $(SRC_DIR)/*.cpp)
-OBJ_DIR = build/obj
+BUILD_DIR = build
+TARGET = tests_runner
+SRC_MAIN_FILE=testRunner.cpp
+
+SRC_DIR =./src
+SRC_BLAS_DIR =../blas/src
+SRC_TEST = $(shell find $(SRC_DIR) -name '*.cpp')
+SRC_BLAS = $(shell find $(SRC_BLAS_DIR) -name '*.cpp')
+
+OBJ_DIR = $(BUILD_DIR)/obj
 OBJ = $(patsubst $(SRC_DIR)/%.cpp,$(OBJ_DIR)/%.o,$(SRC))
 
-# Default target
-all: $(TARGET)
+all: clean build
 
-$(TARGET): $(OBJ)
-	@mkdir -p $(@D)
-	$(CXX) $(CXXFLAGS) $^ -o $@
+build: $(BUILD_DIR)/$(TARGET)
 
-$(OBJ_DIR)/%.o: $(SRC_DIR)/%.cpp
-	@mkdir -p $(@D)
-	$(CXX) $(CXXFLAGS) -c $< -o $@
+$(BUILD_DIR)/$(TARGET): $(SRC_MAIN_FILE)
+	@mkdir -p $(BUILD_DIR)
+	$(CXX) $(SRC_TEST) $(SRC_BLAS) $< -o $@ $(CXXFLAGS)
+
 
 clean:
-	rm -rf $(OBJ_DIR) $(TARGET)
+	rm -rf $(BUILD_DIR)
+
+test:
+	./$(BUILD_DIR)/$(TARGET)
 
 .PHONY: all clean
