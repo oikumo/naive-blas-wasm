@@ -7,19 +7,17 @@
 
 extern "C" {
 
-size_t create_array(int length) {
-    return (size_t)static_cast<size_t*>(malloc(length * sizeof(size_t)));
-}
+size_t create_array(int length);
 
-void free_array(size_t ptr) {
-    auto data = reinterpret_cast<uint32_t*>(ptr);
-    free(data);
-}
+void free_array(size_t ptr);
 
-void modify_array(size_t ptr, int index, size_t value) {
-    auto data = reinterpret_cast<uint32_t*>(ptr);
-    data[index] = value;
-}
+void modify_array(size_t ptr, int index, size_t value);
+
+int int_sqrt(int x);
+
+int int_sum(int a, int b);
+
+void multiply(float factor, size_t ptr, size_t length);
 
 }
 

@@ -12,7 +12,7 @@
   "scripts": {
     "pub": "make & npm publish --access public",
     "build": "make",
-    "test": "./tests/build/tests_runner"
+    "test": "cd tests && make clean && make && ./build/tests_runner"
   },
   "author": "oikumo@gmail.com",
   "license": "MIT"
