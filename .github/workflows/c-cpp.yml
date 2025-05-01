@@ -16,5 +16,5 @@ jobs:
     - name: make
       working-directory: ./tests
       run: make
-    - name: run tests
-      run: npm run tests
+    - name: run test
+      run: npm run test
