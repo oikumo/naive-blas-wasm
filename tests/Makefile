@@ -1,7 +1,7 @@
 # Compiler and flags
 CXX = g++
 CXXFLAGS = -std=c++11 -Wall -Wextra -g -Iinclude
-TARGET = build/test_runner
+TARGET = build/tests_runner
 
 # Source and object files
 SRC_DIR = ./
