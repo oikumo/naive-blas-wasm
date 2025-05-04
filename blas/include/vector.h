@@ -19,6 +19,8 @@ int int_sum(int a, int b);
 
 void multiply(float factor, size_t ptr, size_t length);
 
+void drawTexToTex(size_t ptr, int width, size_t ptrTex, int texWidth, int texHeight, int dx, int dy);
+
 }
 
 #endif

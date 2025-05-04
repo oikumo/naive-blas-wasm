@@ -29,5 +29,25 @@ void multiply(float factor, size_t ptr, size_t length) {
         data[i] *= factor;
     }
 }
-    
+
+void drawTexToTex(size_t targetPtr, int targetWidth, size_t sourcePtr, int sourceWidth, int sourceHeight, int dx, int dy) {
+    auto target = reinterpret_cast<uint32_t*>(targetPtr);
+    auto source = reinterpret_cast<uint32_t*>(sourcePtr);
+    const int sourceSize = sourceWidth * sourceHeight;
+    int col = 0;
+    int row = 0;
+
+    for (int i = 0; i < sourceSize; i++) {
+        target[(dx + col) + (dy + row) * targetWidth] = source[col + row * sourceWidth];
+
+        if (col + 1 == sourceWidth) {
+            col = 0;
+            row++;
+        }
+        else {
+            col++;
+        }
+    }
+}
+   
 }

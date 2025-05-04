@@ -17,6 +17,7 @@ EMSCRIPTEN_BINDINGS(my_module) {
   function("create_array", &create_array, emscripten::allow_raw_pointers());
   function("free_array", &free_array, emscripten::allow_raw_pointer<size_t>());
   function("modify_array", &modify_array, allow_raw_pointer<size_t>());
+  function("drawTexToTex", &drawTexToTex, allow_raw_pointer<size_t>());
 
   emscripten::class_<Data>("Data")
     .smart_ptr_constructor("Data", &std::make_shared<Data>)
