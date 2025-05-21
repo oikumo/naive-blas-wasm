@@ -6,6 +6,7 @@
 #include "include/vector.h"
 #include "include/data.h"
 #include "include/texture.h"
+#include "include/array-float32.h"
 
 using namespace emscripten;
 
@@ -18,6 +19,9 @@ EMSCRIPTEN_BINDINGS(my_module) {
   function("free_array", &free_array, emscripten::allow_raw_pointer<size_t>());
   function("modify_array", &modify_array, allow_raw_pointer<size_t>());
   function("drawTexToTex", &drawTexToTex, allow_raw_pointer<size_t>());
+
+  function("arrayFloat32Modify", &arrayFloat32Modify, emscripten::allow_raw_pointers());
+  function("arrayFloat32ModifySegment", &arrayFloat32Modify, emscripten::allow_raw_pointers());
 
   emscripten::class_<Data>("Data")
     .smart_ptr_constructor("Data", &std::make_shared<Data>)
